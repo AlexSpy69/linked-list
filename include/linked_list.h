@@ -28,7 +28,6 @@ int get_index(struct node *p, int value) {
 		i++;
 	}
 	return i;
-
 }
 
 int get_length(struct node *p) {
