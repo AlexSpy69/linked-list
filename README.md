@@ -1,2 +1,3 @@
 # linked-list
- Linked list implementation in C
+
+linked list implementation in C because why not
