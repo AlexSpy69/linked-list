@@ -69,3 +69,10 @@ void remove_node(struct node *p, int index) {
 	p->next = p->next->next;
 	free(old);
 }
+
+void set_value(struct node *p, int index, int value) {
+	for (int i = 0; i<index; i++) {
+		p = p->next;
+	}
+	p->value = value;
+}

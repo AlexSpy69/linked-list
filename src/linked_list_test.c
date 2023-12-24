@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	// new elements
 	add_node(head, 420);
 	add_node(head, 1337);
-	add_node(head, 53008);
+	add_node(head, 58008);
 	print_list(head);
 
 	// get length
@@ -27,6 +27,11 @@ int main(int argc, char *argv[]) {
 	// remove element
 	remove_node(head, 2);
 	printf("Removed 2nd node: ");
+	print_list(head);
+
+	// change value
+	set_value(head, 2, 5318008);
+	printf("Changed value of 2nd node: ");
 	print_list(head);
 
 	return 0;
