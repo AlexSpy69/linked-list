@@ -60,3 +60,12 @@ void add_node(struct node *head, int value) {
 
 	p->next = new_node;
 }
+
+void remove_node(struct node *p, int index) {
+	for (int i = 0; i<index-1; i++) {
+		p = p->next;
+	}
+	struct node *old = p->next;
+	p->next = p->next->next;
+	free(old);
+}
