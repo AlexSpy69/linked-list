@@ -8,6 +8,8 @@ int main(int argc, char *argv[]) {
 	struct node *head;
 	head = malloc(sizeof(struct node));
 	head->value = 69;
+
+	printf("Created the head node\n");
 	
 	// new elements
 	add_node(head, 420);
@@ -32,6 +34,11 @@ int main(int argc, char *argv[]) {
 	// change value
 	set_value(head, 2, 5318008);
 	printf("Changed value of 2nd node: ");
+	print_list(head);
+
+	// insert node
+	insert_node(head, 2, 7353);
+	printf("Inserted new value at index 2: ");
 	print_list(head);
 
 	return 0;

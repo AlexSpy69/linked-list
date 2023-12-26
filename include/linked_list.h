@@ -14,14 +14,15 @@ void print_list(struct node *p) {
 	printf("\n");
 }
 
-void walk(struct node *p, int times) {
-	for (int i = 0; i<times; i++) {
+struct node *walk(struct node *p, int times) {
+	for (int i = 0; i < times && p != NULL; i++) {
 		p = p->next;
 	}
+	return p;
 }
 
 int get_value(struct node *p, int index) {
-	walk(p, index);
+	p = walk(p, index);
 	return p->value;
 }
 
@@ -41,6 +42,29 @@ int get_length(struct node *p) {
 		i++;
 	}
 	return i;
+}
+
+void insert_node(struct node *head, int index, int value) {
+	struct node *new_node;
+	new_node = malloc(sizeof(struct node));
+	if (new_node == NULL) {
+		return;
+	}
+	
+	new_node->value = value;
+	new_node->next = NULL;
+
+	if (head == NULL) {
+		head = new_node;
+		return;
+	}
+
+	struct node *p = head;
+	p = walk(p, index-1);
+
+	struct node *next = p->next;
+	p->next = new_node;
+	new_node->next = next;
 }
 
 void add_node(struct node *head, int value) {
@@ -67,13 +91,13 @@ void add_node(struct node *head, int value) {
 }
 
 void remove_node(struct node *p, int index) {
-	walk(p, index-1);
+	p = walk(p, index-1);
 	struct node *old = p->next;
 	p->next = p->next->next;
 	free(old);
 }
 
 void set_value(struct node *p, int index, int value) {
-	walk(p, index);
+	p = walk(p, index);
 	p->value = value;
 }
