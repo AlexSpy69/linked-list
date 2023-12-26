@@ -40,7 +40,8 @@ int get_length(struct node *p) {
 }
 
 void add_node(struct node *head, int value) {
-	struct node *new_node = malloc(sizeof(struct node));
+	struct node *new_node;
+	new_node = malloc(sizeof(struct node));
 	if (new_node == NULL) {
 		return;
 	}
