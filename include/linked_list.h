@@ -14,10 +14,14 @@ void print_list(struct node *p) {
 	printf("\n");
 }
 
-int get_value(struct node *p, int index) {
-	for (int i = 0; i<index; i++) {
+void walk(struct node *p, int times) {
+	for (int i = 0; i<times; i++) {
 		p = p->next;
 	}
+}
+
+int get_value(struct node *p, int index) {
+	walk(p, index);
 	return p->value;
 }
 
@@ -63,17 +67,13 @@ void add_node(struct node *head, int value) {
 }
 
 void remove_node(struct node *p, int index) {
-	for (int i = 0; i<index-1; i++) {
-		p = p->next;
-	}
+	walk(p, index-1);
 	struct node *old = p->next;
 	p->next = p->next->next;
 	free(old);
 }
 
 void set_value(struct node *p, int index, int value) {
-	for (int i = 0; i<index; i++) {
-		p = p->next;
-	}
+	walk(p, index);
 	p->value = value;
 }
